@@ -8,7 +8,7 @@ fun main(){
     slogan(resultado)
     resta(num1,num2)
     println("Valor maximo: " + max(num1,num2,25))
-    println("Promedio: " + promedio(2,5,8))
+    println("Promedio: " + promedio(3,5,8))
 
 }
 //Funciones con parametros
@@ -36,4 +36,4 @@ val max = {a:Int,b:Int,c:Int ->
     else "Son iguales"
 }
 
-val promedio = {n1:Int,n2:Int,n3:Int -> (n1+n2+n3)/3 }
+val promedio: (Int, Int, Int) -> Float = { n1: Int, n2: Int, n3: Int -> (n1 + n2 + n3).toFloat() / 3 }
