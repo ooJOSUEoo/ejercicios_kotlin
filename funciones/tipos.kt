@@ -29,11 +29,6 @@ val slogan = {r:Any -> println(r) }
 
 val resta = {a:Int, b:Int -> println(a-b)}
 
-val max = {a:Int,b:Int,c:Int -> 
-    if (a > b && a > c) a
-    else if (b > a && b > c) b
-    else if (c > a && c > b) c
-    else "Son iguales"
-}
+val max = {a:Int,b:Int,c:Int ->maxOf(a,b,c)}
 
 val promedio: (Int, Int, Int) -> Float = { n1: Int, n2: Int, n3: Int -> (n1 + n2 + n3).toFloat() / 3 }
