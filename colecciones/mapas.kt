@@ -52,10 +52,11 @@ fun main(){
     println()
 
     println("Ejercicio")
+    println("Ejecuta en terminal: kotlinc colecciones/mapas.kt -include-runtime -d colecciones/mapas.jar && java -jar colecciones/mapas.jar")
 
-    val diccionarioSpaEng = mapOf(
+    val diccionarioSpaEng = mutableMapOf(
         "one" to "uno",
-        "apple" to "mansana",
+        "apple" to "manzana",
         "cheese" to "queso",
         "car" to "automovil",
         "dog" to "perro",
@@ -64,7 +65,7 @@ fun main(){
         "man" to "hombre",
         "woman" to "mujer",
         "life" to "vida",
-        "day" to "día",
+        "day" to "dia",
         "night" to "noche"
     )
 
@@ -76,19 +77,34 @@ fun main(){
 
     fun buscarPalabra(diccionario: Map<String, String>, palabraSpa: String) {
         if (diccionario.containsValue(palabraSpa)) {
-            println("Resultado: " + diccionario.filter { it.value == palabraSpa }.keys.first())
+            println("Tradución: " + diccionario.filter { it.value == palabraSpa }.keys.first())
+        }else{
+            println("No se encuentra la palabra en el diccionario")
         }
     }
 
-    println("Ingresar 1 para mostrar el diccionario o 2 para buscar una palabra")
-    val opcion = readLine()!!.toInt()
-    when (opcion) {
-        1 -> mostrarDiccionario(diccionarioSpaEng)
-        2 -> {
-            println("Ingresar palabra en español")
-            val palabraSpa = readLine()!!
-            buscarPalabra(diccionarioSpaEng, palabraSpa)
+    fun ejecucion(){
+        println()
+        println("*****************************************")
+        println("Ingresar 1 para mostrar el diccionario o 2 para buscar una palabra")
+        val opcion = readLine()!!.toString()
+        when (opcion) {
+            "1" -> {
+                mostrarDiccionario(diccionarioSpaEng)
+                ejecucion()
+            }
+            "2" -> {
+                println("Ingresar palabra en español")
+                val palabraSpa = readLine()!!
+                buscarPalabra(diccionarioSpaEng, palabraSpa)
+                ejecucion()
+            }
+            else -> {
+                println("Opción no válida")
+                ejecucion()
+            }
         }
-        else -> println("Opción no válida")
     }
+    ejecucion()
+
 }
